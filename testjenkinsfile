@@ -14,5 +14,12 @@ pipeline{
           sh 'npm pack'
         }
        }
+       stage('upload artifat'){
+        steps{
+          sh 'curl -uadmin:AP36P6tFM6srf8krV25YNxF8TGH -T \
+          *.tgz \
+           "http://44.197.177.233:8081/artifactory/utc-nodejs/utc-app-${BUILD_ID}.TGZ"'
+        }
+       }
     }
 }
